@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .btnBox{
+        width: 30px;
+        height: 30px;
+    }
+</style>
+
+<div id="app">
+  <form action="aa">
+      <table border="1px" style="width: 500px;">
+          <thead>
+            <tr>
+                <td>id</td>
+                <td>书籍名称</td>
+                <td>出版日期</td>
+                <td>价格</td>
+                <td>书籍购买数量</td>
+                <td>操作</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in books">
+                <td>{{item.id}}</td>
+                <td>{{item.bookName}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.price}}</td>
+                <td>
+                    <button class="btnBox" @click="reduce">-</button>
+                    <input  class="btnBox"  type="number">
+                    <button class="btnBox" @click="reduce">+</button>
+                </td>
+            </tr>
+          </tbody>
+      </table>
+  </form>
+</div>
+
+</body>
+<script src="../../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            books:[
+                {
+                    id:1,
+                    bookName:'《算法导论》',
+                    date:'2020-03',
+                    price:85.00,
+                },
+                {
+                    id:2,
+                    bookName:'《java基础》',
+                    date:'2020-03',
+                    price:66.00,
+                },
+                {
+                    id:3,
+                    bookName:'《代码大全》',
+                    date:'2020-03',
+                    price:200.00,
+                },
+                {
+                    id:4,
+                    bookName:'《go编程》',
+                    date:'2020-03',
+                    price:117.00,
+                },
+            ],
+            count:0,
+        },
+        methods:{},
+        computed:{}
+
+
+    })
+</script>
+</html>

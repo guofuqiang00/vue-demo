@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html></title>
+    </head>
+<style>
+</style>
+<body>
+
+<div id="app" v-cloak>
+    <ul>
+        <li v-for='(data,index) in infos'>{{index}} - {{data}}</li>
+    </ul>
+</div>
+
+<script src="../../js/vue.js"></script>
+<script>
+
+    /*
+    *
+    * 使用v-for 给对应的元素或组件添加一个:key属性
+    * 这个和Vue的虚拟dom的diff算法有关系
+    *
+    * */
+    const app =new Vue({
+        el:'#app',
+        data:{
+            infos:{
+                id:1001,
+                name:'xxx',
+                age:18
+            },
+            data:[
+                {
+                    id:1002,
+                    name:'aaa',
+                    age: 23
+                },
+                {
+                    id:1003,
+                    name:'aaa',
+                    age: 25
+                },
+                {
+                    id:1004,
+                    name:'aaa',
+                    age: 27
+                },
+            ]
+
+        },
+        methods:{
+
+        }
+
+    })
+</script>
+</body>
+</html>

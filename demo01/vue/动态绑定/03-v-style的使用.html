@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<h1 :style="{fontSize:finalSize,color:'red'}">{{message}}</h1> <!--对象语法-->
+    <h1 :style="baseStyle1">{{message}}</h1> <!--数组语法-->
+    <h1 :style="[baseStyle2,baseStyle3]">{{message}}</h1> <!--数组语法-->
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            message:'信息',
+            movies:['海贼王',"西游记","天龙八部","大话西游"],
+            currentIndex:0,
+            finalSize:'100px',
+            baseStyle1:[{background:"yellow"},{color:'green'}],
+            baseStyle2:{color:'yellow'},
+            baseStyle3:{color:'green'}
+        },
+        methods:{
+            btn:function (m,index){
+                console.info(m)
+                this.currentIndex = index;
+            }
+
+        },
+        comments: {
+
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">{{message}}</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    /**
+     *  vue 响应式（挡数据发生改变  页面会响应自动改变）
+     *  let（变量） const(常亮)
+     *  vue编程范式  声明式编程  修改数据自定更新
+     *  js编程范式   命令式编程  修改数据要手动代码更新
+     * **/
+
+  const app = new Vue({
+      el:'#app',
+      data:{
+          message:"hello"
+      }
+
+  })
+
+</script>
+
+
+</body>
+</html>

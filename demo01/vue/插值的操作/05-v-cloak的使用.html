@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>\
+
+    </title>
+</head>
+<style>
+    [v-cloak]{
+        display: none;
+    }
+</style>
+<body>
+
+<div id="app" v-cloak>{{message}}</div>
+
+<script src="../../js/vue.js"></script>
+<script>
+
+    //在vue解析之前 有v-cloak这个属性
+    //在vue解析之后 没有v-cloak这个属性 就会删掉v-clocak这个属性
+setTimeout(function (){
+    const app =new Vue({
+        el:'#app',
+        data:{
+            message:"消息",
+            url: '<a href="https://www.baidu.com/">百度</a>'
+        }
+
+    })
+},3000)
+</script>
+</body>
+</html>

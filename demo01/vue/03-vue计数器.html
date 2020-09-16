@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--view-->
+<div id="app">
+    <h1>当前计数器: {{num}}</h1>
+    <!--<button v-on:click="num++">+</button>
+    <button v-on:click="num&#45;&#45;">-</button>-->
+ <!--   <button v-on:click="add">+</button>
+    <button v-on:click="sub">-</button>-->
+    <button @click="add">+</button>
+    <button @click="sub">-</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+
+    /**model*/
+    //proxy
+    const obj={
+        num:0
+    }
+
+    /**viewmodel*/
+    let app = new Vue({
+        el:'#app',
+        data:obj,
+        methods:{
+            add(){
+                this.num++;
+                console.info("加加")
+            },
+            sub(){
+                console.info("减减")
+                this.num--;
+            }
+        }
+
+    })
+
+
+</script>
+</body>
+</html>

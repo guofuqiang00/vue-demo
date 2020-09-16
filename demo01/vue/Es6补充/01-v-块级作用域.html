@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+
+
+    /***
+     * let 当变量需要改变的时候
+     * const 当变量不需要改变的时候 常量 不能再次赋值
+     *   1.在使用const定义标识符 必须进行赋值
+     *   2.常量的含义是指向的对象不能修改，但是可以改变对象内部的属性
+     * 在Es6开发中 优先使用const 只要需要改变一个标识符的时候才会使用let
+     * let 有块级作用域
+     * var 没有块级作用域
+     * ***/
+
+    // const name = 'abc';
+    // name = 'ccc';
+
+        /**常量的含义是指向的对象不能修改，但是可以改变对象内部的属性**/
+        const obj ={
+            id:1001,
+            name:'admin',
+            password:'admin',
+            phone:'1784545555',
+            data:{}
+        }
+        obj.name = 'root'
+        obj.phone = '145885454555'
+        obj.phoneNumber = '1689945440';
+        obj.data.uname = '123456'
+        delete obj.phone; //删除某一列
+        console.info(obj)
+
+
+
+
+     const app = new Vue({
+        el:'#app',
+        data:{},
+        methods:{},
+        computed:{}
+    })
+
+
+
+
+</script>
+</body>
+</html>

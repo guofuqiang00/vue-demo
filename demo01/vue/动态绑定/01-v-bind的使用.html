@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html></title>
+    </head>
+<style>
+    [v-cloak]{
+        display: none;
+    }
+    .active{
+        color: red;
+    }
+</style>
+<body>
+
+<div id="app" v-cloak>
+    <h1 :class="{'active':isActive}">{{message}}</h1> <!--对象语法-->
+    <h1 :class="getClasses()">{{message}}</h1>  <!--对象语法-->
+    <h1 :class="[row,col]">{{message}}</h1>  <!--数组语法-->
+    <button @click="onClick">变色</button>
+    <img :src="imgUrl">
+</div>
+
+<script src="../../js/vue.js"></script>
+<script>
+    const app =new Vue({
+        el:'#app',
+        data:{
+            message:"消息",
+            url: '<a href="https://www.baidu.com/">百度</a>',
+            imgUrl:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1600158897820&di=06b8ca873ca911586f71b68ccc0f9bf5&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F14%2F75%2F01300000164186121366756803686.jpg",
+            isActive:true,
+            row:"aaaa",
+            col:"bbbb"
+
+        },
+        methods:{
+            onClick:function (){
+                this.isActive =!this.isActive;
+            },
+            getClasses:function (){
+                return  {active:this.isActive};
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

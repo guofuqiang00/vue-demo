@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <!--stop 阻止冒泡-->
+  <div @click="divClick">
+      <button @click.stop="btn">按钮</button> <!--@click.stop 停止冒泡  调用event.stopPropagation()-->
+  </div>
+
+    <!--2、prevent-->
+    <!--@click.prevent 停止冒泡  调用event.preventDefault()-->
+    <form action="baidu">
+        <input type="submit" value="提交" @click.prevent="submit">  <!--只提交不跳转-->
+    </form>
+
+    <!--3、监听键的点击-->
+    <input type="text" @keyup="keyup">
+
+    <!--4、ones-->
+    <button type="text" @click.once="onceBtn">once</button>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+            counter:0,
+            event2:"event"
+        },
+        methods:{
+           divClick(){
+               console.info("divClick")
+            },
+            btn(){
+                console.info("btn")
+            },
+            submit(){
+               console.info('提交')
+            },
+            keyup(){
+                console.info("keyup")
+            },
+            onceBtn(){
+                console.info("onesBtn")
+            }
+
+        },
+        computed:{},
+    })
+
+    function btnclick(c){
+
+        console.info(c)
+
+    }
+
+</script>
+
+</body>
+</html>

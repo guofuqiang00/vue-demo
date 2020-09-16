@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <button @click="btn1">btn1</button>
+  <button @click="btn2()">btn2</button> <!--不传东西 为undefined-->
+  <button @click="btn3">btn3</button> <!--会穿一个event对象-->
+  <button @click="btn4('aaa',event2)">btn4</button> <!--event2是vue data 里面的-->
+  <button @click="btn5('aaa',$event)">btn5</button> <!--event2是vue data 里面的-->
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+            counter:0,
+            event2:"event"
+        },
+        methods:{
+           btn1(){
+               console.info("btn1")
+           },
+           btn2(abc){
+               console.info(abc)
+           },
+           btn3(event){
+               console.info(event)
+           },
+           btn4(a,e){
+               console.info(a+"----"+e)
+           },
+           btn5(a,event){
+               console.info(a+"----"+event)
+           }
+        },
+        computed:{},
+    })
+
+    function btnclick(c){
+
+        console.info(c)
+
+    }
+
+</script>
+
+</body>
+</html>

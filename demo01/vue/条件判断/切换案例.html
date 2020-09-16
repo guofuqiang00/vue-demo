@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--虚拟dom放在内存里面  2个上下 input 如果一样  会调用同一个虚拟dom-->
+    <label>登录:</label>
+    <input v-if="isTab" type="text" placeholder="请输入账号">
+    <input v-else type="text" placeholder="请输入邮箱">
+    <input type="submit" @click="btn" value="切换邮箱">
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+
+    const  app = new Vue({
+        el:'#app',
+        data:{
+            isTab:true
+        },
+        methods:{
+            btn(){
+                this.isTab =!this.isTab;
+            }
+        },
+        computed:{
+            isShow(){
+                if(this.isTab){
+                    return true
+                }else{
+                    return false
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

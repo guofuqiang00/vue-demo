@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+<h1>{{fullName}}</h1>
+    <ul>
+        <li v-for="(book,index) in books">{{book}}</li>
+    </ul>
+    <div>总计:  {{sumPrice}}</div>
+
+
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+            firstName:"jack",
+            lastName:"james",
+            books:[
+                {id:1001,name:"java基础",'price':119},
+                {id:1001,name:"php基础",'price':80},
+                {id:1001,name:"go语言",'price':110}
+            ]
+
+        },
+        methods:{},
+        computed:{  //计算属性 直接引入
+            fullName:function (){
+                return this.firstName+" "+this.lastName;
+            },
+            sumPrice:function (){
+                let sum = 0;
+                for (let book of this.books){
+                    sum+=book.price;
+                }
+
+             return sum;
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>
