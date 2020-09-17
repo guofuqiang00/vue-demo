@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    /*
+    *
+    * 函数栈空间创建一个新的对象 内存地址不一样的
+    * 函数每次都返回新的对象 内存地址不一样
+    * data 必须是一个函数  vue实力都有自己的状态
+    * */
+
+    function get(){
+        return {
+            name:"aaa",
+            age:18
+        }
+    }
+
+    let newVar1 = this.get();
+    let newVar2 = this.get();
+    let newVar3 = this.get();
+    newVar1.name='BBB';
+    console.log(newVar1);
+    console.log(newVar2);
+    console.log(newVar3);
+
+
+</script>
+
+</body>
+</html>

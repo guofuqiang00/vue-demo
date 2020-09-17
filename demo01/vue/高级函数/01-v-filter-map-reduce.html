@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../../js/vue.js"></script>
+<script>
+
+
+    let arr = [10,20,111,222,444,50,40];
+
+
+    //1、filter  true/false
+    //filter函数有一个要求:必须返回一个boolean
+    //true: 当返回为true时，函数会自动将这次回调的n加入新的数组中
+    //false: 当返回false，函数内部会过滤掉这次的n
+    let newArr = arr.filter(e => {return e<100});
+    console.log(newArr);
+
+    //2、map函数的使用 返回的结果
+    let map = newArr.map(n => n*2);
+    console.log(map);
+
+    //reduce作用对数组中所有的内容进行汇总 preValue上一次的结果
+    let reduce = map.reduce(function (preValue, n){
+        return preValue+n
+    },0); //第一次的上一次 初始值为0
+    console.log(reduce);
+    //第一次: preValue:0 n:20
+    //第二次: preValue:20 n:40
+    //第三次: preValue:60 n:100
+    //第四次: preValue:160 n:80
+    //240
+
+    //简化操作
+    let reduce2 = arr.filter(e=>e<100).map(e=>e*2).reduce((preValue, e)=>preValue+e,0);
+    console.log(reduce2);
+
+</script>
+</body>
+</html>

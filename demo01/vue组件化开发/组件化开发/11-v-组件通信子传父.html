@@ -1,0 +1,60 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--父组件模板-->
+<div id="app">
+        <cpn @itemclick="cpnClick"></cpn>
+</div>
+<!--子组件模板-->
+<template id="cpn">
+    <div>
+        <button v-for="(item,index) in categories" @click="btnClick(item,index)">{{item.name}}</button>
+    </div>
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+    //自组件
+    const cpn={
+      template:'#cpn',
+        data(){
+          return{
+              categories:[
+                  {id:"aa",name:"热门推荐1"},
+                  {id:"bb",name:"热门推荐2"},
+                  {id:"cc",name:"热门推荐3"},
+              ]
+          }
+        },
+        methods:{
+            btnClick(item,index){
+                this.$emit('itemclick',item,index)  //发射到父组件 $emit 自定义事件  通过@itemclick来获取
+            }
+        }
+
+    }
+    //父组件
+    const app = new Vue({
+        el:'#app',
+        data:{
+            message:"消息消息",
+            movies:['aaa','bbb','ccc']
+        },
+        components:{
+            cpn
+        },
+        methods: {
+            cpnClick(item,index){
+                console.log(item);
+                console.log(index);
+                console.info("itemClick")
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--1、lazy修饰符 可以让数据失去焦点或者回车时才更新-->
+  <h2>{{message}}</h2>
+  <input type="text" v-model.lazy="message">
+    <br><br><br>
+
+    <!--2、修饰符number  v-model 默认绑定String类型-->
+  <h2>{{age+'----'+ typeof age}}</h2>
+  <input type="number" v-model.number="age">
+    <br><br><br>
+
+    <!--3、修饰符: trim 去除字符串两边的空格-->
+  <h2>{{name}}</h2>
+  <input type="text" v-model.trim="name">
+    <br><br><br>
+
+
+
+
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            message:"hello",
+            age:'',
+            name:''
+
+        },
+        methods:{
+
+        }
+
+    })
+
+</script>
+</body>
+</html>

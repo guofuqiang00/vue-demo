@@ -10,36 +10,50 @@
         width: 30px;
         height: 30px;
     }
+    th ,td{
+        padding: 8px 16px;
+        border: 1px solid #e9e9e9;
+        text-align: left;
+    }
+    th{
+        background-color: #f7f7f7;
+        color: #5c6b77;
+        font-weight: 600;
+    }
 </style>
 
 <div id="app">
-  <form action="aa">
-      <table border="1px" style="width: 500px;">
+      <table border="1px" style="border-spacing: 0;border-collapse:collapse;">
           <thead>
             <tr>
-                <td>id</td>
-                <td>书籍名称</td>
-                <td>出版日期</td>
-                <td>价格</td>
-                <td>书籍购买数量</td>
-                <td>操作</td>
+                <th>id</th>
+                <th>书籍名称</th>
+                <th>出版日期</th>
+                <th>价格</th>
+                <th>书籍购买数量</th>
+                <th>总价格</th>
+                <th>操作</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in books">
+            <tr v-for="(item,index) in books">
                 <td>{{item.id}}</td>
                 <td>{{item.bookName}}</td>
                 <td>{{item.date}}</td>
-                <td>{{item.price}}</td>
+                <td>{{item.price | showPrice}}</td>
                 <td>
-                    <button class="btnBox" @click="reduce">-</button>
-                    <input  class="btnBox"  type="number">
-                    <button class="btnBox" @click="reduce">+</button>
+                    <button class="btnBox" :disabled="item.num<=1" @click="reduce(index)">-</button>
+                    {{item.num}}
+                    <button class="btnBox" @click="increase(index)">+</button>
                 </td>
+                <td v-if="item.num==1">{{item.price|showPrice}}</td>
+                <td v-else>{{item.sumPrice|showPrice }}</td>
+                <td><button @click="remove(index)">移除</button></td>
             </tr>
           </tbody>
       </table>
-  </form>
+    <h2 v-if="books.length>0">总价格{{totalPrice | showPrice}}</h2>
+    <h2 v-else>购物车为空</h2>
 </div>
 
 </body>
@@ -54,30 +68,66 @@
                     bookName:'《算法导论》',
                     date:'2020-03',
                     price:85.00,
+                    num:1
                 },
                 {
                     id:2,
                     bookName:'《java基础》',
                     date:'2020-03',
                     price:66.00,
+                    num:1
                 },
                 {
                     id:3,
                     bookName:'《代码大全》',
                     date:'2020-03',
                     price:200.00,
+                    num:1
                 },
                 {
                     id:4,
                     bookName:'《go编程》',
                     date:'2020-03',
                     price:117.00,
+                    num:1
                 },
             ],
-            count:0,
+            count:1,
         },
-        methods:{},
-        computed:{}
+        methods:{
+            increase(index){
+              let lastNum =   this.books[index].num++;
+             this.books[index].sumPrice = this.books[index].price*(lastNum+1);
+            },
+            reduce(index){
+              if(this.books[index].num--<=1){
+                  this.books[index].num = 1;
+              }
+                this.books[index].sumPrice = this.books[index].price*(this.books[index].num);
+            },
+            remove(index){
+               this.books.splice(index,1)
+            }
+
+        },
+        filters:{
+            showPrice(price){
+                return '￥'+price.toFixed(2)
+            }
+        },
+        computed:{
+            totalPrice: function () {
+                let reduce = this.books.reduce((preValue, book)=>preValue+(book.price*book.num),0);
+                console.log(reduce);
+
+                // let totalPrice = 0;
+                // let books = this.books;
+                // for (let i = 0; i < books.length; i++) {
+                //     totalPrice+= books[i].price * books[i].num;
+                // }
+               return reduce;
+            }
+        }
 
 
     })

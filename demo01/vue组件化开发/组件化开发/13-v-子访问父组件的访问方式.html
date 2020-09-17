@@ -1,0 +1,48 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--父组件模板-->
+<div id="app">
+   <div>
+       <cpn ref="aaa"></cpn>
+   </div>
+</div>
+<!--子组件模板-->
+<template id="cpn">
+    <div>
+        <button @click="btnClick">子组件按钮</button>
+    </div>
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+    //父组件
+    const app = new Vue({
+        el:'#app',
+        data:{
+            message:"消息消息",
+        },
+        methods: {
+            btn(){
+                console.info("父组件函数")
+            }
+        },
+        components: {
+                cpn: {
+                    template: '#cpn',
+                    methods: {
+                        btnClick(){
+                            this.$parent.btn()
+                        }
+                    }
+                }
+            }
+
+    })
+</script>
+
+</body>
+</html>
